@@ -1,0 +1,365 @@
+-- COLLECTION "task" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"task_type"	INTEGER NOT NULL,
+-- 	"icon"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"starttime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"endtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"checkpoints"	TEXT NOT NULL,
+-- 	"count"	INTEGER NOT NULL DEFAULT 0,
+-- 	"cycle_type"	INTEGER NOT NULL,
+-- 	"cycle_interval"	INTEGER NOT NULL DEFAULT 0,
+-- 	"cycle_num"	INTEGER NOT NULL DEFAULT 0,
+-- 	"status"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"data"	TEXT NOT NULL,
+-- 	"note"	TEXT DEFAULT '',
+-- 	"err_code"	INTEGER,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "bill" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"bill_type"	INTEGER NOT NULL,
+-- 	"account_id"	INTEGER NOT NULL DEFAULT 0,
+-- 	"member_id"	INTEGER NOT NULL DEFAULT 0,
+-- 	"account_book_id"	INTEGER NOT NULL DEFAULT 0,
+-- 	"category_id"	INTEGER NOT NULL DEFAULT 0,
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"money"	NUMERIC NOT NULL DEFAULT 0,
+-- 	"icon"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- 	"note"	TEXT NOT NULL DEFAULT '',
+-- 	"transfer_to_id"	INTEGER,
+-- 	"extdata"	TEXT,
+-- 	"task_id"	INTEGER
+-- )
+-- COLLECTION "currency" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"country_name"	TEXT NOT NULL DEFAULT '',
+-- 	"currency_code"	TEXT NOT NULL DEFAULT '' UNIQUE,
+-- 	"flag"	TEXT NOT NULL DEFAULT '',
+-- 	"rate"	REAL NOT NULL DEFAULT 0,
+-- 	"autoupdate"	INTEGER NOT NULL DEFAULT 0,
+-- 	"base"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "account_change_log" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"account_id"	INTEGER NOT NULL,
+-- 	"bill_id"	INTEGER,
+-- 	"content"	TEXT DEFAULT '',
+-- 	"change"	NUMERIC NOT NULL DEFAULT 0,
+-- 	"type"	INTEGER NOT NULL,
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "account" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"account_type"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL,
+-- 	"currency_code"	TEXT NOT NULL,
+-- 	"balance"	NUMERIC NOT NULL DEFAULT 0,
+-- 	"refund_accountid"	INTEGER,
+-- 	"refund_day"	INTEGER,
+-- 	"bill_day"	INTEGER,
+-- 	"auto_refound"	INTEGER NOT NULL DEFAULT 0,
+-- 	"notproperty"	INTEGER NOT NULL DEFAULT 0,
+-- 	"disuse"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT,
+-- 	"note"	TEXT DEFAULT ''
+-- )
+
+-- COLLECTION "account_book" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"name"	TEXT NOT NULL,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT,
+-- 	"note"	TEXT DEFAULT ''
+-- )
+
+-- COLLECTION "member" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION sqlite_sequence(name,seq)
+
+-- COLLECTION "category" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"name"	INTEGER NOT NULL,
+-- 	"accountbook_id"	INTEGER DEFAULT 0,
+-- 	"type"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	-- "extdata"
+--     -- "account"
+--     -- "task"
+--     -- "bill"
+--     -- "currency"
+--     -- "account_change_log"
+--     -- "account_book"
+--     -- "member"
+--     -- "category"
+-- )
+
+-- COLLECTION "task" (
+-- "id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- "accountbook_id"	INTEGER NOT NULL,
+-- "name"	TEXT NOT NULL DEFAULT '',
+-- "task_type"	INTEGER NOT NULL,
+-- "icon"	INTEGER NOT NULL DEFAULT 0,
+-- "icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- "createtime"	INTEGER NOT NULL DEFAULT 0,
+-- "starttime"	INTEGER NOT NULL DEFAULT 0,
+-- "endtime"	INTEGER NOT NULL DEFAULT 0,
+-- "checkpoints"	TEXT NOT NULL,
+-- "count"	INTEGER NOT NULL DEFAULT 0,
+-- "cycle_type"	INTEGER NOT NULL,
+-- "cycle_interval"	INTEGER NOT NULL DEFAULT 0,
+-- "cycle_num"	INTEGER NOT NULL DEFAULT 0,
+-- "status"	INTEGER NOT NULL DEFAULT 0,
+-- "index"	INTEGER NOT NULL DEFAULT 0,
+-- "data"	TEXT NOT NULL,
+-- "note"	TEXT DEFAULT '',
+-- "err_code"	INTEGER,
+-- "extdata"	TEXT, 
+-- "source_type" INTEGER, "source_id" INTEGER
+-- )
+
+
+-- COLLECTION "bill" (
+-- "id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- "name"	TEXT NOT NULL DEFAULT '',
+-- "bill_type"	INTEGER NOT NULL,
+-- "account_id"	INTEGER NOT NULL DEFAULT 0,
+-- "member_id"	INTEGER NOT NULL DEFAULT 0,
+-- "account_book_id"	INTEGER NOT NULL DEFAULT 0,
+-- "category_id"	INTEGER NOT NULL DEFAULT 0,
+-- "createtime"	INTEGER NOT NULL DEFAULT 0,
+-- "money"	NUMERIC NOT NULL DEFAULT 0,
+-- "icon"	INTEGER NOT NULL DEFAULT 0,
+-- "icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- "note"	TEXT NOT NULL DEFAULT '',
+-- "transfer_to_id"	INTEGER,
+-- "extdata"	TEXT,
+-- "task_id"	INTEGER
+-- )
+
+-- COLLECTION "currency" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"country_name"	TEXT NOT NULL DEFAULT '',
+-- 	"currency_code"	TEXT NOT NULL DEFAULT '' UNIQUE,
+-- 	"flag"	TEXT NOT NULL DEFAULT '',
+-- 	"rate"	REAL NOT NULL DEFAULT 0,
+-- 	"autoupdate"	INTEGER NOT NULL DEFAULT 0,
+-- 	"base"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "account_change_log" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"account_id"	INTEGER NOT NULL,
+-- 	"bill_id"	INTEGER,
+-- 	"content"	TEXT DEFAULT '',
+-- 	"change"	NUMERIC NOT NULL DEFAULT 0,
+-- 	"type"	INTEGER NOT NULL,
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+
+-- COLLECTION "account" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"account_type"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL,
+-- 	"currency_code"	TEXT NOT NULL,
+-- 	"balance"	NUMERIC NOT NULL DEFAULT 0,
+-- 	"refund_accountid"	INTEGER,
+-- 	"refund_day"	INTEGER,
+-- 	"bill_day"	INTEGER,
+-- 	"auto_refound"	INTEGER NOT NULL DEFAULT 0,
+-- 	"notproperty"	INTEGER NOT NULL DEFAULT 0,
+-- 	"disuse"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT,
+-- 	"note"	TEXT DEFAULT ''
+-- )
+
+-- COLLECTION "account_book" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"name"	TEXT NOT NULL,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT,
+-- 	"note"	TEXT DEFAULT ''
+-- )
+
+-- COLLECTION "member" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION sqlite_sequence(name,seq)
+
+-- COLLECTION "category" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"name"	INTEGER NOT NULL,
+-- 	"accountbook_id"	INTEGER DEFAULT 0,
+-- 	"type"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon"	INTEGER DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "goal_record" (
+-- 	"id"	INTEGER,
+-- 	"type"	INTEGER NOT NULL,
+-- 	"goal_id"	INTEGER NOT NULL,
+-- 	"bill_id"	INTEGER,
+-- 	"budget"	NUMERIC NOT NULL DEFAULT 0,
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"modifytime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"starttime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"endtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"note"	TEXT DEFAULT '',
+-- 	"data"	TEXT,
+-- 	"extdata"	TEXT,
+-- 	PRIMARY KEY("id" AUTOINCREMENT)
+-- )
+
+-- COLLECTION "goal" (
+-- 	"id"	INTEGER,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"source_account_id"	INTEGER,
+-- 	"target_account_id"	INTEGER,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"amount"	NUMERIC NOT NULL,
+-- 	"currency_code"	TEXT NOT NULL,
+-- 	"type"	INTEGER NOT NULL,
+-- 	"icon"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"modifytime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"starttime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"endtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"status"	INTEGER NOT NULL DEFAULT 0,
+-- 	"display"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"note"	TEXT DEFAULT '',
+-- 	"data"	TEXT,
+-- 	"extdata"	TEXT,
+-- 	PRIMARY KEY("id" AUTOINCREMENT)
+-- )
+
+-- COLLECTION "msgbox" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"type"	INTEGER NOT NULL,
+-- 	"source_id"	INTEGER NOT NULL,
+-- 	"icon"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"modifytime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"starttime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"endtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"note"	TEXT NOT NULL DEFAULT '',
+-- 	"status"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"data"	TEXT,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "local_notification" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"type"	INTEGER NOT NULL,
+-- 	"source_id"	INTEGER NOT NULL,
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"modifytime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"starttime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"endtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"cycle_type"	INTEGER NOT NULL,
+-- 	"note"	TEXT NOT NULL DEFAULT '',
+-- 	"status"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"data"	TEXT,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "task" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"task_type"	INTEGER NOT NULL,
+-- 	"icon"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"starttime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"endtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"checkpoints"	TEXT NOT NULL,
+-- 	"count"	INTEGER NOT NULL DEFAULT 0,
+-- 	"cycle_type"	INTEGER NOT NULL,
+-- 	"cycle_interval"	INTEGER NOT NULL DEFAULT 0,
+-- 	"cycle_num"	INTEGER NOT NULL DEFAULT 0,
+-- 	"status"	INTEGER NOT NULL DEFAULT 0,
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"data"	TEXT NOT NULL,
+-- 	"note"	TEXT DEFAULT '',
+-- 	"err_code"	INTEGER,
+-- 	"extdata"	TEXT
+-- )
+
+-- COLLECTION "bill" (
+-- 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+-- 	"name"	TEXT NOT NULL DEFAULT '',
+-- 	"bill_type"	INTEGER NOT NULL,
+-- 	"account_id"	INTEGER NOT NULL DEFAULT 0,
+-- 	"member_id"	INTEGER 
+-- )
+
+
+--     COLLECTION "wish" (
+-- 	"id"	INTEGER,
+-- 	"accountbook_id"	INTEGER NOT NULL,
+-- 	"name"	TEXT NOT NULL,
+-- 	"amount"	NUMERIC NOT NULL,
+-- 	"createtime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"modifytime"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon"	INTEGER NOT NULL DEFAULT 0,
+-- 	"icon_fontFamily"	TEXT NOT NULL DEFAULT '',
+-- 	"index"	INTEGER NOT NULL DEFAULT 0,
+-- 	"data"	TEXT,
+-- 	"extdata"	TEXT,
+-- 	PRIMARY KEY("id" AUTOINCREMENT)
+-- )
